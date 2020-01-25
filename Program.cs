@@ -29,21 +29,37 @@ namespace ProductInventory
                         genCommand(inventory);
                         break;
 
+                    case "del":
+                        deleteCommand(inventory);
+                        break;
+
+                    case "clear":
+                        Console.Clear();
+                        welcomCommand();
+                        break;
+
                     default:
                         Console.WriteLine("Command not found. Type \"help\" for more info.");
                         break;
-
                 }
-
                 tmp = Console.ReadLine();
             }
-
-
         }
 
+        private static void deleteCommand(Inventory inventory)
+        {
+            Console.WriteLine("Enter № of product:");
 
+            int num = 0;
+            while (!Int32.TryParse(Console.ReadLine(), out num))
+            {
+                Console.Write("That's not a number! Try again: ");
+            }
 
+            inventory.removeFromList(num - 1);
 
+            Console.WriteLine($"Product {num} removed.");
+        }
 
         public static void genCommand(Inventory inv)
         {
@@ -76,6 +92,7 @@ namespace ProductInventory
             Console.WriteLine("{0,10} - Show Inventory list.", "show");
             Console.WriteLine("{0,10} - Generate some products.", "gen");
             Console.WriteLine("{0,10} - Clear screen.", "clear");
+            Console.WriteLine("{0,10} - Delete product from Inventory.", "del");
         }
 
 

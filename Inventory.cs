@@ -21,21 +21,31 @@ namespace ProductInventory
         public List<Product> getFullList()
         {
             return ProductList;
+
+        }
+
+        public void removeFromList(int position)
+        {
+            ProductList.RemoveAt(position);
         }
 
         public void printProductList()
         {
-            Console.WriteLine(new string('=', 40));
-            Console.WriteLine("| {0,9}|{1,9} |{2,15} |","Number/ID","Amount","Price");
-            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(new string('=', 46));
+            Console.WriteLine("|{0,5}| {1,9}|{2,9} |{3,15} |", "№","Number/ID","Amount","Price");
+            Console.WriteLine(new string('=', 46));
 
-            foreach (var product in ProductList)
+            for(var i = 0; i < ProductList.Count; i++)
             {
-                Console.WriteLine("|{0,9} |{1,9} |{2,15:c} |", product.Number, product.Amount, product.Price);
+                Console.WriteLine("|{0,5}|{1,9} |{2,9} |{3,15:c} |", i + 1, ProductList[i].Number, ProductList[i].Amount, ProductList[i].Price);
             }
-            Console.WriteLine(new string('=', 40));
+
+            Console.WriteLine(new string('=', 46));
             Console.WriteLine("{0,23} {1,15:C}","Total Price: ", TotalCost);
         }
+
+
+
 
 
 
