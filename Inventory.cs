@@ -28,6 +28,10 @@ namespace ProductInventory
         {
             ProductList.RemoveAt(position);
         }
+        public void addToList(int name, int amount, double price)
+        {
+            ProductList.Add(new Product(name, amount, price));
+        }
 
         public void printProductList()
         {

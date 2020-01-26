@@ -11,11 +11,11 @@ namespace ProductInventory
 
             welcomCommand();
            
-            var tmp = Console.ReadLine();
-            while (tmp != "q")
+            var tmp = Console.ReadLine().Split(' ');
+            while (tmp[0] != "q")
             {
                 bool f1 = true;
-                switch (tmp.ToLower())
+                switch (tmp[0].ToLower())
                 {
                     case "show":
                         inventory.printProductList();
@@ -27,6 +27,10 @@ namespace ProductInventory
 
                     case "gen":
                         genCommand(inventory);
+                        break;
+
+                    case "add":                                            
+                        addCommand(inventory, tmp);
                         break;
 
                     case "del":
@@ -42,7 +46,32 @@ namespace ProductInventory
                         Console.WriteLine("Command not found. Type \"help\" for more info.");
                         break;
                 }
-                tmp = Console.ReadLine();
+                tmp = Console.ReadLine().Split(' ');
+            }
+        }
+
+        private static void addCommand(Inventory inventory, string[] arg)
+        {
+            if (arg.Length != 4)
+            {
+                Console.WriteLine("\tWrong parameters. Please check. \n\tadd ID AMOUNT PRICE");
+            }
+            else
+            {
+                var pars1 = 0;
+                var pars2 = 0;
+                var pars3 = 0;
+
+                if ((Int32.TryParse(arg[1], out pars1)) && (Int32.TryParse(arg[2], out pars2)) && (Int32.TryParse(arg[3], out pars3)))
+                {
+                    inventory.addToList(pars1, pars2, pars3);
+                    Console.WriteLine("Added 1 new item.");
+                }
+                else
+                {
+                    Console.WriteLine("Parameters must be a numbers!");
+                }
+
             }
         }
 

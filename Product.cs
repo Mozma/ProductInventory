@@ -6,6 +6,7 @@ namespace ProductInventory
     class Product
     {
         public static Random rnd = new Random();
+        
 
         public int Amount { get; set; }
         public double Price { get; set; }
@@ -24,6 +25,13 @@ namespace ProductInventory
             Amount = amount;
             Price = price;
             Number = rnd.Next(10000);
+        }
+
+        public Product(int name, int amount, double price)
+        {
+            Number = name;
+            Amount = amount;
+            Price = price;
         }
 
         public double getTotalCost()
