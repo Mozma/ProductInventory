@@ -112,7 +112,7 @@ namespace ProductInventory
             Console.WriteLine(new string('-', 30));
             Console.WriteLine("        ProductInventory");
             Console.WriteLine(new string('-', 30));
-            printCommand();
+           // printCommand();
         }
         
         public static void printCommand()
@@ -122,6 +122,7 @@ namespace ProductInventory
             Console.WriteLine("{0,10} - Generate some products.", "gen");
             Console.WriteLine("{0,10} - Clear screen.", "clear");
             Console.WriteLine("{0,10} - Delete product from Inventory.", "del");
+            Console.WriteLine("{0,10} - Add new item to Inventory.", "add");
         }
 
 
